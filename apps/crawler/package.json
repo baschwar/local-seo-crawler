@@ -1,0 +1,18 @@
+{
+  "name": "@seo-auditor/crawler",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "scripts": {
+    "sidecar": "tsx src/sidecar.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@seo-auditor/crawl-core": "workspace:*",
+    "@seo-auditor/database": "workspace:*",
+    "@seo-auditor/reporting": "workspace:*",
+    "@seo-auditor/seo-rules": "workspace:*",
+    "@seo-auditor/shared-types": "workspace:*"
+  }
+}

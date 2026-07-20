@@ -1,0 +1,20 @@
+{
+  "name": "@seo-auditor/cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "seo-auditor": "./src/index.ts"
+  },
+  "scripts": {
+    "seo-auditor": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@seo-auditor/crawler": "workspace:*",
+    "@seo-auditor/reporting": "workspace:*",
+    "@seo-auditor/seo-rules": "workspace:*",
+    "@seo-auditor/shared-types": "workspace:*",
+    "commander": "^14.0.0"
+  }
+}

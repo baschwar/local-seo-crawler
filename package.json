@@ -1,0 +1,28 @@
+{
+  "name": "local-seo-auditor",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local-first SEO and accessibility crawler",
+  "type": "module",
+  "packageManager": "pnpm@11.7.0",
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "scripts": {
+    "seo-auditor": "pnpm --filter @seo-auditor/cli exec tsx src/index.ts",
+    "fixture": "pnpm --filter @seo-auditor/test-fixtures start",
+    "build": "pnpm -r --if-present build",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "pnpm typecheck && pnpm test"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^24.0.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}

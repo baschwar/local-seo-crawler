@@ -1,0 +1,14 @@
+{
+  "name": "@seo-auditor/database",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@seo-auditor/shared-types": "workspace:*",
+    "better-sqlite3": "^12.2.0"
+  }
+}
