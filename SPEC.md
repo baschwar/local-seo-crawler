@@ -3,12 +3,15 @@
 ## Status
 
 - Product specification version: 0.1
+- Release baseline: 0.3.0
 - Active implementation milestone: Milestone 3
 - Initial platform: current macOS on Apple Silicon
 - Architecture target: cross-platform local desktop application
 - Milestone 1 implementation status: complete and acceptance-verified
 - Milestone 2 implementation status: complete and acceptance-verified
-- Milestone 3 implementation status: closeout-complete; final native-build and installed-app UAT evidence are recorded in `docs/UAT.md`
+- Milestone 3 implementation status: complete and acceptance-verified on 2026-07-20; 23 automated tests and final native-build/installed-app evidence are recorded in `docs/UAT.md`
+
+Milestone 4 is explicitly outside the 0.3.0 release. Accessibility, Grammar, HTML Validation, Answer Readiness, Search Console, PageSpeed Insights, and Google Analytics remain unavailable and must not be inferred from Milestone 3 navigation contracts.
 
 This file is the durable in-repository source of truth derived from the initial implementation brief. Each milestone must remain executable, tested, documented, and backward-compatible before work moves to the next milestone.
 
@@ -142,7 +145,7 @@ Fetch once per origin, select the relevant user-agent group, apply allow/disallo
 | Maximum response | 20 MB |
 | Respect robots.txt | enabled |
 | External link checking | enabled, non-recursive |
-| User-agent | `LocalSEOAuditor/0.1 (+local desktop audit tool)` |
+| User-agent | `LocalSEOAuditor/0.3 (+local desktop audit tool)` |
 
 The crawler must support 429 backoff, an emergency stop in the later sidecar, a domain allowlist, private-network blocking by default, and redaction of sensitive headers. A deliberately entered localhost/private start URL is an explicit local-crawl exception.
 

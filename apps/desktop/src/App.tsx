@@ -9,7 +9,7 @@ type LibraryEntry = { projectPath: string; summary: ProjectSummary };
 const priorities: Priority[] = ["critical", "high", "medium", "low", "review", "informational"];
 const primaryNav: Screen[] = ["Overview", "Action Plan", "Technical SEO", "URLs", "Redirects"];
 const laterNav: Screen[] = ["Accessibility", "Grammar", "HTML Validation", "Answer Readiness", "Search Console", "Crawl History", "Exports", "Settings"];
-const defaults = { includeSubdomains: false, respectRobotsTxt: true, userAgent: "LocalSEOAuditor/0.1 (+local desktop audit tool)", maxConcurrency: 5, requestsPerSecond: 2, maxUrls: 0, maxDepth: 100, timeoutMs: 30_000, maxResponseBytes: 20 * 1024 * 1024, maxRedirects: 10, maxRetries: 2, checkExternalLinks: true };
+const defaults = { includeSubdomains: false, respectRobotsTxt: true, userAgent: "LocalSEOAuditor/0.3 (+local desktop audit tool)", maxConcurrency: 5, requestsPerSecond: 2, maxUrls: 0, maxDepth: 100, timeoutMs: 30_000, maxResponseBytes: 20 * 1024 * 1024, maxRedirects: 10, maxRetries: 2, checkExternalLinks: true };
 
 function priorityLabel(priority: Priority): string { return priority === "informational" ? "Info" : priority.charAt(0).toUpperCase() + priority.slice(1); }
 function date(value?: string): string { return value ? new Date(value).toLocaleString() : "—"; }

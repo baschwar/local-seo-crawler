@@ -156,7 +156,7 @@ async function startCrawl(projectPath: string, rawOptions: unknown, id: string):
     projectPath: resolvedProjectPath,
     includeSubdomains: options.includeSubdomains ?? false,
     respectRobotsTxt: options.respectRobotsTxt ?? true,
-    userAgent: options.userAgent ?? "LocalSEOAuditor/0.1 (+local desktop audit tool)",
+    userAgent: options.userAgent ?? "LocalSEOAuditor/0.3 (+local desktop audit tool)",
     maxConcurrency: options.maxConcurrency ?? 5,
     requestsPerSecond: options.requestsPerSecond ?? 2,
     maxUrls: options.maxUrls ?? 0,

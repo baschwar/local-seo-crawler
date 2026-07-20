@@ -1,7 +1,8 @@
 # Local SEO Auditor — Milestone 3 Closeout Record
 
 **Prepared:** 2026-07-20
-**Purpose:** Record the implemented Milestone 3 baseline, verification evidence, remaining release refinements, and post-Milestone-3 boundary.
+**Release:** 0.3.0 (`v0.3.0` release baseline)
+**Purpose:** Record the completed Milestone 3 baseline, verification evidence, remaining release refinements, and explicit post-Milestone-3 boundary.
 
 ## Executive summary
 
@@ -37,8 +38,9 @@ A successful desktop crawl now enters an analyzing state, automatically runs tec
 
 ### Verification performed
 
-- `pnpm check` passes with 22 tests: unit tests plus deterministic 100+ page crawl, automatic audit lifecycle, persistence, failure/retry, cancellation, filtering, history, identity retention, and export integration coverage.
-- Final native bundle and installed-app evidence are recorded in `docs/UAT.md`.
+- `pnpm check` passes with 23 tests across 8 test files: unit tests plus deterministic 100+ page crawl, automatic audit lifecycle, persistence, failure/retry, cancellation, filtering, history, identity retention, and export integration coverage.
+- The final `Local SEO Auditor_0.3.0_aarch64.dmg` production build succeeds. Its application executable, bundled Node runtime, and `better_sqlite3.node` binding are all Mach-O `arm64`.
+- Installed-app UAT was completed on 2026-07-20; final bundle and database evidence are recorded in `docs/UAT.md`.
 
 ## Current known gaps and defects
 
@@ -65,12 +67,16 @@ A successful desktop crawl now enters an analyzing state, automatically runs tec
 3. **UAT and release readiness**
    - `docs/UAT.md` defines installed-app steps, visible results, persisted evidence, and failure criteria.
    - Automated checks cover all critical lifecycle and persistence paths.
-   - The initial Git commit is created only after final native verification.
+   - The Milestone 3 release-baseline commit and `v0.3.0` tag are created only after final native verification.
 
 4. **Secondary M3 usability work**
    - Native Save dialog for exports.
    - Virtualized raw URLs/redirects/links/images tables with filters and page inspection links.
    - Clear app version/build information, update path, and a proper signed/notarized distribution plan if external distribution is intended.
+
+## Milestone 4 boundary and later work
+
+Milestone 3 is complete. Accessibility, Grammar, HTML Validation, Answer Readiness, Search Console, PageSpeed Insights, and Google Analytics are not implemented by this release. No work below is part of version 0.3.0.
 
 ## Proposed milestones after M3
 
@@ -106,14 +112,6 @@ Use OAuth 2.0 with OS-keychain token storage. Keep page metrics and query metric
 - Treat later audit stages as independent: a failure in one must not invalidate a completed static crawl.
 - Continue robots compliance, conservative defaults, incremental persistence, and secret redaction.
 - The distributable app must continue to bundle architecture-matched Node/SQLite sidecar dependencies.
-
-## Questions for the planning partner
-
-1. Should automatic technical SEO analysis run for every completed static crawl, or be a user-configurable post-crawl stage? The current recommendation is automatic by default with a visible retry path.
-2. What is the desired definition of “M3 complete”: foundation only, or foundation plus the fully populated Action Plan loop and raw-data investigation views?
-3. Should the next large investment be rendered accessibility (M4), or should the team finish M3 release discipline first: UAT, crawl history, exports, GitHub baseline, signing/notarization?
-4. Which data should be retained across crawl runs by default, and how should status/notes be matched when the same finding recurs?
-5. Is macOS-only acceptable for the first public release, or should the packaging/build architecture be planned for Windows/Linux before further desktop-specific work?
 
 ## Useful source locations
 

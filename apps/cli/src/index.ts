@@ -32,7 +32,7 @@ function invocationPath(value: string): string {
 const program = new Command()
   .name("seo-auditor")
   .description("Local-first SEO crawler")
-  .version("0.1.0");
+  .version("0.3.0");
 
 program
   .command("crawl")

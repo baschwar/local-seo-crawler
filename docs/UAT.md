@@ -5,12 +5,12 @@ This checklist validates the installed macOS application, not the development se
 ## Execution record
 
 - Date: 2026-07-20
-- Build: `Local SEO Auditor_0.1.0_aarch64.dmg`, final rebuild completed 2026-07-20
+- Build: `Local SEO Auditor_0.3.0_aarch64.dmg`, final rebuild completed 2026-07-20
 - Installed application: `/Applications/Local SEO Auditor.app` copied from the DMG (real directory, not a source-tree symlink)
 - Fixture origin: `http://localhost:4173`
-- Test project: `/Users/bradschwartz/Documents/Local SEO Auditor/local-seo-audit.seocrawl`
+- Test projects: `/Users/bradschwartz/Documents/Local SEO Auditor/local-seo-audit.seocrawl` for visual checklist execution; `/private/tmp/local-seo-auditor-v030-uat.seocrawl` for final packaged-runtime persistence verification
 - Tester: Codex through the installed application accessibility interface plus SQLite evidence
-- Result: PASS for the Milestone 3 closeout scope. Two pause/resume presentation races were found, fixed, rebuilt, and retested on the installed bundle.
+- Result: PASS for the Milestone 3 closeout scope. Two pause/resume presentation races found during the initial checklist were fixed, rebuilt, and retested. The final versioned bundle was installed from the DMG and reverified through its packaged arm64 runtime and persisted database evidence.
 
 ## Checks
 
@@ -40,14 +40,18 @@ This checklist validates the installed macOS application, not the development se
 
 Final evidence:
 
-- Installed bundle launched from `/Applications` with the packaged sidecar; no development server, pnpm, or source-tree symlink was used.
+- Final `0.3.0` bundle launched from `/Applications` with the packaged sidecar; no development server, pnpm, or source-tree symlink was used. The application window is configured at 1440 × 920 and should be expanded to the full visible display before future capture-based UAT.
 - Save Draft created schema version 3 with one project and zero crawl rows before any crawl started.
-- Final uninterrupted installed-app fixture run: `completed_with_errors`, 121 URLs, one completed technical audit, and 517 findings. The fixture intentionally includes HTTP errors, hence `completed_with_errors`.
+- Final uninterrupted installed-runtime fixture run from a clean temporary application-data home: `completed_with_errors`, 121 URLs, one completed technical audit, and 517 findings. The fixture intentionally includes HTTP errors, hence `completed_with_errors`.
 - The final app automatically navigated to a populated Action Plan showing page 1 of 6 at 100 rows per page.
 - Installed pause/resume verification returned `Resume, Cancel` after pause and `Pause, Cancel` after resume. A separate cancelled run retained 119 discovered URLs and had no audit row.
-- Finding Detail, status controls, notes editing, and URL Inspector were exercised in the installed app. Automated migration tests independently close/reopen the database and verify status/note retention and recurrence rules.
+- A controlled failed crawl retained 119 URL rows, ended in `failed`, passed `PRAGMA integrity_check`, and had no audit row.
+- A controlled audit failure left the completed crawl unchanged, recorded a failed audit attempt, and completed a retry with 517 findings without another crawl.
+- Finding Detail, status controls, notes editing, and URL Inspector were exercised in the installed app. Final packaged-runtime verification changed a finding to ignored, saved the note `v0.3.0 installed UAT retention note`, recrawled, and confirmed the recurring row inherited both values while the historical row remained unchanged.
 - Crawl History rendered in the installed app; the installed bundled sidecar returned both cancelled and completed runs with crawl-specific counts, duration, and audit state.
+- Reopening the project through a fresh packaged-sidecar process returned three crawl-history rows and the original ignored finding with its note intact.
 - Formula-safe URL and finding exports are covered by the deterministic integration suite; the installed bundle contains the same reporting package and sidecar export handler.
 - App executable, bundled Node runtime, and `better_sqlite3.node` are all Mach-O `arm64`. The app is 138 MB and the DMG is 43 MB in this build.
 - Later audit navigation remained explicit unavailable states; no Milestone 4 dependency was added.
 - Network activity was limited to the entered fixture and intentional crawler destinations. During picker troubleshooting, an existing `baschwar.com` project was selected by mistake and its recrawl was cancelled immediately after the toolbar label exposed the mismatch; no cloud analysis or telemetry service was involved.
+- The release-shell environment could launch the final app but macOS denied it assistive-access window inspection. Final visual-state confidence therefore combines the earlier same-code installed-app checklist with final `0.3.0` lifecycle, pagination, persistence, history, retry, and architecture evidence from the packaged runtime.

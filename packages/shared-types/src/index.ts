@@ -321,7 +321,7 @@ export interface RobotsDecision {
 export const DEFAULT_CRAWL_OPTIONS = {
   includeSubdomains: false,
   respectRobotsTxt: true,
-  userAgent: "LocalSEOAuditor/0.1 (+local desktop audit tool)",
+  userAgent: "LocalSEOAuditor/0.3 (+local desktop audit tool)",
   maxConcurrency: 5,
   requestsPerSecond: 2,
   maxUrls: 0,
